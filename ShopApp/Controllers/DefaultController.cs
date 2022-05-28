@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopApp.Business.Abstract;
+using ShopApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,9 @@ namespace ShopApp.Controllers
 
         public IActionResult Index()
         {
-            return View(_productService.GetAll());
+            return View(new ProductListModel() { 
+            Products=_productService.GetAll()
+            });
         }
     }
 }
