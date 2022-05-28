@@ -1,4 +1,4 @@
-﻿@model ProductListModel
+﻿@model ShopApp.Models.ProductListModel
 
 <div class="row">
     <div class="col-md-3">
@@ -10,8 +10,6 @@
     </div>
     <div class="col-md-9">
 
-        <partial name="_slider" />
-        
         <div class="row">
             @foreach (var product in Model.Products)
             {
@@ -19,7 +17,7 @@
             }
         </div>
 
-       
+
     </div>
 </div>
 

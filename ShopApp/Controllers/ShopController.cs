@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShopApp.Business.Abstract;
+using ShopApp.Entities;
+using ShopApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,38 @@ namespace ShopApp.Controllers
 {
     public class ShopController : Controller
     {
-        public IActionResult Index()
+        private IProductService _productService;
+
+        public ShopController(IProductService productService)
         {
-            return View();
+            _productService = productService;
+        }
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Product product = _productService.GetProductDetails((int)id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(new ProductDetailsModel()
+            {
+                Product = product,
+                Categories = product.ProductCategories.Select(i => i.Category).ToList()
+            });
+        }
+
+        public IActionResult List()
+        {
+            return View(new ProductListModel()
+            {
+                Products = _productService.GetAll()
+            });
         }
     }
 }
