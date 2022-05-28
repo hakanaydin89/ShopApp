@@ -11,7 +11,7 @@ namespace ShopApp.DataAccess.Abstract
     {
         T GetById(int id);
         T GetOne(Expression<Func<T, bool>> filter); // ilk kaydı alır
-        IQueryable<T> GetAll(Expression<Func<T, bool>> filter); // bütün kayıtları alır
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null); // bütün kayıtları alır
 
         void Create(T entity);
         void Update(T entity);
