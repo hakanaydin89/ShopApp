@@ -11,7 +11,6 @@ using ShopApp.Business.Abstract;
 using ShopApp.Business.Concrete;
 using ShopApp.DataAccess.Abstract;
 using ShopApp.DataAccess.Concrete.EfCore;
-using ShopApp.DataAccess.Concrete.Memory;
 using ShopApp.Identity;
 using System;
 using System.Collections.Generic;
@@ -103,6 +102,12 @@ namespace ShopApp
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "Products",
+                    pattern: "products/{category?}",
+                    defaults:new {controller="Shop",action="List"}
+                    );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Default}/{action=Index}/{id?}");

@@ -12,7 +12,7 @@ namespace ShopApp.DataAccess.Concrete.EfCore
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-VL8MVB0\\MSSQLSERVER2019;Database=ShopDB;integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-VL8MVB0\\MSSQLSERVER2019;Database=ShopAppDB;integrated security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
